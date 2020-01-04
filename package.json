@@ -1,0 +1,28 @@
+{
+	"name": "BudgetAppNodeJs",
+	"version": "1.0.0",
+	"description": "A budget app created using Nodes.js, Express, and Postgres",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start:dev": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ben-loper/BudgetAppNodeJs.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ben-loper/BudgetAppNodeJs/issues"
+	},
+	"homepage": "https://github.com/ben-loper/BudgetAppNodeJs#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	},
+	"dependencies": {
+		"ejs": "^3.0.1",
+		"express": "^4.17.1"
+	}
+}
