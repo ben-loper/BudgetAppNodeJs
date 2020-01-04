@@ -5,7 +5,10 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-const port = 3000;
+let port = process.env.PORT;
+if (port == null || port == '') {
+	port = 3000;
+}
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}!`);
