@@ -14,9 +14,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">My Budgets</a>
             </li>
-            <a class="float-right mr-auto" href="#">
-                <button type="button" class="btn btn-info">Login</button>
-            </a>
+            <%if (title !== "Login") { %>
+                <a class="float-right mr-auto" href="/login">
+                    <button type="button" class="btn btn-info">Login</button>
+                </a>
+            <% } %>
         </ul>
     </div>
 </nav>

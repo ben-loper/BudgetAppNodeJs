@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', {title: "Login"}); %>
+    <link rel="stylesheet" type="text/css" href="/styling/login.css">
+</head>
+<body>
+    <%- include('partials/header', {title: "Login"}) %>
+    <div id="main-div">
+        <h1>Login</h1>
+        <form id="login-form">
+            <div id="login-input">
+                <label class="login-row" id="username-lbl" for="username">Username</label>
+                <input class="text-input login-row" type="text" placeholder="username" name="username" required>
+                <label class="login-row" id="password-lbl" for="password">Password</label>
+                <input class="text-input login-row" type="password" placeholder="password" name="password" required>
+            </div>
+            <button class="btn-primary" type="submit">Login</button>
+        </form>
+        <p>Need to register?</p>
+        <p>Forgot Password?</p>
+    </div>
+    
+    <%- include('partials/footer') %>
+</body>
+</html>
