@@ -14,10 +14,5 @@ app.listen(port, () => {
 	console.log(`Example app listening on port ${port}!`);
 });
 
-app.get('/', (req, res) => {
-	res.render('index');
-});
-
-app.get('/login', (req, res) => {
-	res.render('login');
-});
+const budgetRouter = require('./routes/budgetRouter.js');
+app.use('/', budgetRouter);
