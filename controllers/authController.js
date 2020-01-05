@@ -8,6 +8,11 @@ exports.get_register_page = function(req, res) {
 	res.render('register');
 };
 
+exports.register_new_user = function(req, res) {
+	console.log(req.body);
+	res.render('register');
+};
+
 exports.get_users = async function(req, res) {
 	let users = await userDao.prototype.getAllUsers();
 

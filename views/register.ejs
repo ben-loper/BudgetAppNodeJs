@@ -7,27 +7,29 @@
 <body>
     <%- include('partials/header', {title: "Register"}) %>
     <div id="main-div">
-        <h1>Login</h1>
-        <form id="login-form">
+        <h1>Register</h1>
+        <form id="login-form" method="POST" action="/register">
             <div id="login-input">
-                <label class="login-row" id="first-name-lbl" for="first-name">First Name</label>
-                <input class="text-input login-row" type="text" placeholder="first name" name="first-name" required>
-                <label class="login-row" id="last-name-lbl" for="last-name">Last Name</label>
-                <input class="text-input login-row" type="text" placeholder="last name" name="last-name" required>                
-                <label class="login-row" id="email-lbl" for="email">Email</label>
-                <input class="text-input login-row" type="email" placeholder="email" name="email" required>
-                <label class="login-row" id="username-lbl" for="username">Username</label>
-                <input class="text-input login-row" type="text" placeholder="username" name="username" required>
-                <label class="login-row" id="password-lbl" for="password">Password</label>
-                <input class="text-input login-row" type="password" placeholder="password" name="password" required>
-                <label class="login-row" id="confirm-password-lbl" for="password">Confirm Password</label>
-                <input class="text-input login-row" type="password" placeholder="password" name="confirm-password" required>
+                <label class="login-row" id="first-name-lbl" for="first-name">First Name*</label>
+                <input class="text-input login-row"id="first-name" type="text" placeholder="first name" name="first-name" required>
+                <label class="login-row" id="last-name-lbl" for="last-name">Last Name*</label>
+                <input class="text-input login-row" id="last-name" type="text" placeholder="last name" name="last-name" required>                
+                <label class="login-row" id="email-lbl" for="email">Email*</label>
+                <input class="text-input login-row" id="email" type="email" placeholder="email" name="email" required>
+                <label class="login-row" id="username-lbl" for="username">Username*</label>
+                <input class="text-input login-row" id="username" type="text" placeholder="username" name="username" required>
+                <label class="login-row" id="password-lbl" for="password">Password*</label>
+                <input class="text-input login-row" id="password" type="password" placeholder="password" name="password" required>
+                <label class="login-row" id="confirm-password-lbl" for="password">Confirm Password*</label>
+                <input class="text-input login-row" id="confirm-password" type="password" placeholder="password" name="confirm-password" required>
+                <label class="warning" style="display:none;" id="password-same-warning-lbl">Passwords must match!</label>
             </div>
-            <button class="btn-primary" type="submit">Register</button>
+            <button class="btn-disabled" id="register-sbm-btn" type="submit" disabled>Register</button>
         </form>
         <a href="/login"><p>Already a user?</p></a>        
     </div>
     
     <%- include('partials/footer') %>
+    <script src="/scripts/register.js" type="text/javascript"></script>
 </body>
 </html>

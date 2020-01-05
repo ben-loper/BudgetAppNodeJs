@@ -14,6 +14,7 @@ router.get('/about', homeContoller.about);
 // Auth Controller Routes
 router.get('/login', authContoller.get_login);
 router.get('/register', authContoller.get_register_page);
+router.post('/register', authContoller.register_new_user);
 
 // Testing Auth
 router.get('/protected', authMiddleware, authContoller.get_login);
