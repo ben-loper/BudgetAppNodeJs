@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', {title: "Register"}); %>
+    <link rel="stylesheet" type="text/css" href="/styling/login.css">
+</head>
+<body>
+    <%- include('partials/header', {title: "Register"}) %>
+    <div id="main-div">
+        <h1>Login</h1>
+        <form id="login-form">
+            <div id="login-input">
+                <label class="login-row" id="first-name-lbl" for="first-name">First Name</label>
+                <input class="text-input login-row" type="text" placeholder="first name" name="first-name" required>
+                <label class="login-row" id="last-name-lbl" for="last-name">Last Name</label>
+                <input class="text-input login-row" type="text" placeholder="last name" name="last-name" required>                
+                <label class="login-row" id="email-lbl" for="email">Email</label>
+                <input class="text-input login-row" type="email" placeholder="email" name="email" required>
+                <label class="login-row" id="username-lbl" for="username">Username</label>
+                <input class="text-input login-row" type="text" placeholder="username" name="username" required>
+                <label class="login-row" id="password-lbl" for="password">Password</label>
+                <input class="text-input login-row" type="password" placeholder="password" name="password" required>
+                <label class="login-row" id="confirm-password-lbl" for="password">Confirm Password</label>
+                <input class="text-input login-row" type="password" placeholder="password" name="confirm-password" required>
+            </div>
+            <button class="btn-primary" type="submit">Register</button>
+        </form>
+        <a href="/login"><p>Already a user?</p></a>        
+    </div>
+    
+    <%- include('partials/footer') %>
+</body>
+</html>
