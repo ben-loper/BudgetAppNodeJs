@@ -1,9 +1,17 @@
 const express = require('express');
 const ejs = require('ejs');
+const expressSession = require('express-session');
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
+app.use(
+	expressSession({
+		secret: 'keyboard cat',
+		resave: true,
+		saveUninitialized: true
+	})
+);
 
 let port = process.env.PORT;
 if (port == null || port == '') {

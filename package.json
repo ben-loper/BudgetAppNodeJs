@@ -13,7 +13,9 @@
 		"url": "git+https://github.com/ben-loper/BudgetAppNodeJs.git"
 	},
 	"keywords": [],
-	"engines": { "node": "12.13.0" },
+	"engines": {
+		"node": "12.13.0"
+	},
 	"author": "",
 	"license": "ISC",
 	"bugs": {
@@ -25,6 +27,8 @@
 	},
 	"dependencies": {
 		"ejs": "^3.0.1",
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"express-session": "^1.17.0",
+		"pg": "^7.17.0"
 	}
 }
