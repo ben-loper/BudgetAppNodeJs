@@ -7,5 +7,5 @@ exports.about = function(req, res) {
 };
 
 exports.route_unknown = function(req, res) {
-	return res.render('error');
+	return res.status(404).render('error');
 };

@@ -22,6 +22,6 @@ router.get('/protected', authMiddleware, authContoller.get_login);
 router.get('/users', authContoller.get_users);
 
 // Handle unknown routes
-router.get('*', homeContoller.route_unknown);
+router.all('*', homeContoller.route_unknown);
 
 module.exports = router;
