@@ -19,7 +19,7 @@ if (port == null || port == '') {
 }
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}!`);
+	console.log(`Budget Better app listening on port ${port}!`);
 });
 
 const budgetRouter = require('./routes/budgetRouter.js');
