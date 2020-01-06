@@ -27,10 +27,5 @@ app.listen(port, () => {
 	console.log(`Budget Better app listening on port ${port}!`);
 });
 
-// app.post('/register', (req, res) => {
-// 	console.log('Got body:', req.body);
-// 	res.sendStatus(200);
-// });
-
 const budgetRouter = require('./routes/budgetRouter.js');
 app.use('/', budgetRouter);

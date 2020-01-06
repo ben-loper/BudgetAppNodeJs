@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function registerUser(user) {
-	console.log(JSON.stringify(user));
 	const response = await fetch('/register', {
 		method: 'POST',
 		mode: 'cors',
@@ -62,7 +61,4 @@ async function registerUser(user) {
 		referrerPolicy: 'no-referrer', // no-referrer, *client
 		body: JSON.stringify(user)
 	});
-
-	console.log(response);
-	//return await response.json(); // parses JSON response into native JavaScript objects
 }

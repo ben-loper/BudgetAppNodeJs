@@ -8,19 +8,20 @@
     <%- include('partials/header', {title: "Login"}) %>
     <div id="main-div">
         <h1>Login</h1>
-        <form id="login-form">
+        <form id="login-form" method="POST" action="/login">
             <div id="login-input">
                 <label class="login-row" id="username-lbl" for="username">Username</label>
-                <input class="text-input login-row" type="text" placeholder="username" name="username" required>
+                <input class="text-input login-row" id="username" type="text" placeholder="username" name="username" required>
                 <label class="login-row" id="password-lbl" for="password">Password</label>
-                <input class="text-input login-row" type="password" placeholder="password" name="password" required>
+                <input class="text-input login-row" id="password" type="password" placeholder="password" name="password" required>
             </div>
-            <button class="btn-primary" type="submit">Login</button>
+            <button class="btn-primary" id="login-sbmt-btn" type="submit">Login</button>
         </form>
         <a href="/register"><p>Need to register?</p></a>
         <p>Forgot Password?</p>
     </div>
     
     <%- include('partials/footer') %>
+    <script src="/scripts/login.js" type="text/javascript"></script>
 </body>
 </html>
