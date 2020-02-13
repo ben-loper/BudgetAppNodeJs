@@ -1,12 +1,15 @@
 let encryptionHelper = require('../../utilities/encryptionHelper.js');
 let User = require('../models/AppUser');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  user: 'postgres',
+  user: process.env.DB_USER,
   host: 'localhost',
   database: 'ProdDb',
-  password: 'postgres',
+  password: process.env.DB_PASSWORD,
   port: 5432
 });
 

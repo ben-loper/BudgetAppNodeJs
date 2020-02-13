@@ -15,7 +15,6 @@ router.get('/about', homeContoller.about);
 router.get('/login', authContoller.get_login);
 router.post('/login', authContoller.log_in_user);
 router.get('/success', authContoller.success);
-
 router.get('/register', authContoller.get_register_page);
 router.post('/register', authContoller.register_new_user);
 
