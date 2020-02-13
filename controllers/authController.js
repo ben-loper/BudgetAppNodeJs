@@ -1,4 +1,5 @@
-let userDao = require('../database/dao/UserDao');
+const userDao = require('../database/dao/UserDao');
+const { registerValidation } = require('../validation/validation.js');
 
 exports.get_login = function(req, res) {
   return res.render('login');
@@ -9,13 +10,20 @@ exports.get_register_page = function(req, res) {
 };
 
 exports.register_new_user = async function(req, res) {
-  let successful = await userDao.registerNewUser(req.body);
-  if (!successful) {
-    res.status(500);
-
-    return res.render('register');
+  const result = registerValidation(req.body);
+  if (result.error != null) {
+    console.log(result.error);
+    return res.status(400).send(result.error.details[0]);
   }
-  return res.render('register');
+
+  return res.send(result);
+  // let successful = await userDao.registerNewUser(req.body);
+  // if (!successful) {
+  //   res.status(500);
+
+  //   return res.render('register');
+  // }
+  // return res.render('register');
 };
 
 exports.get_users = async function(req, res) {

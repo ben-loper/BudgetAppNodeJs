@@ -94,5 +94,3 @@ exports.loginUser = async function(user) {
       return null;
     });
 };
-
-// module.exports = UserDao;
