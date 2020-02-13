@@ -1,43 +1,35 @@
-function AppUser() {}
+module.exports = class AppUser {
+  constructor() {}
 
-AppUser.prototype.getId = function() {
-	return this.id;
+  id;
+  username;
+  password;
+  email;
+  firstName;
+  lastName;
+
+  get id() {}
+  set id(id) {
+    this.id = id;
+  }
+  get username() {}
+  set username(username) {
+    this.username = username;
+  }
+  get password() {}
+  set password(password) {
+    this.password = password;
+  }
+  get email() {}
+  set email(email) {
+    this.email = email;
+  }
+  get firstName() {}
+  set firstName(firstName) {
+    this.firstName = firstName;
+  }
+  get lastName() {}
+  set lastName(lastName) {
+    this.lastName = lastName;
+  }
 };
-
-AppUser.prototype.setId = function(id) {
-	this.id = id;
-};
-
-AppUser.prototype.getUsername = function() {
-	return this.username;
-};
-
-AppUser.prototype.setUsername = function(username) {
-	this.username = username;
-};
-
-AppUser.prototype.getPassword = function() {
-	return this.password;
-};
-
-AppUser.prototype.setPassword = function(password) {
-	this.password = password;
-};
-
-AppUser.prototype.getEmail = function() {
-	return this.email;
-};
-
-AppUser.prototype.setEmail = function(email) {
-	this.email = email;
-};
-
-AppUser.prototype.getIsActive = function() {
-	return this.isActive;
-};
-
-AppUser.prototype.setIsActive = function(isActive) {
-	this.isActive = isActive;
-};
-
-module.exports = AppUser;
