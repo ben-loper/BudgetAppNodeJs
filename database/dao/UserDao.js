@@ -1,11 +1,12 @@
 let encryptionHelper = require('../../utilities/encryptionHelper.js');
 let User = require('../models/AppUser');
 const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
 
 dotenv.config();
 
-const { Pool } = require('pg');
-const pool = new Pool({
+const { Client } = require('pg');
+const pool = new Client({
   user: process.env.DB_USER,
   host: 'localhost',
   database: 'ProdDb',
@@ -44,30 +45,39 @@ exports.getAllUsers = async function() {
 };
 
 exports.registerNewUser = async function(user) {
-  let users = [];
-  // Generate salt to be stored in the DB
-  let salt = await encryptionHelper.generateHash();
-  let hash = await encryptionHelper.generateHash(user.password, salt);
+  console.log(user);
 
-  const text = `INSERT INTO app_user (username, password, email, first_name, last_name) VALUES($1, $2, $3, $4, $5, $6) RETURNING * `;
-  const values = [
-    user.username.toLowerCase(),
-    hash,
-    user.email.toLowerCase(),
-    user.firstName,
-    user.lastName,
-    salt
-  ];
+  const getUserQuery = `SELECT * FROM app_user WHERE username = $1 OR email = $2`;
+  const userValues = [user.username.toLowerCase(), user.email.toLowerCase()];
 
-  await pool
-    .query(text, values)
-    .then(res => {
-      return true;
-    })
-    .catch(e => {
-      console.error(e.stack);
-      return false;
-    });
+  await pool.query(getUserQuery, userValues).then(res => {
+    if (res.rows.length > 0) {
+      console.log('User already exists');
+      throw new Error('User already exists');
+    }
+  });
+
+  // // Generate salt to be stored in the DB
+  bcrypt.hash(user.password, 15, async function(err, hash) {
+    const text = `INSERT INTO app_user (username, password, email, first_name, last_name) VALUES($1, $2, $3, $4, $5) RETURNING * `;
+    const values = [
+      user.username.toLowerCase(),
+      hash,
+      user.email.toLowerCase(),
+      user.first_name,
+      user.last_name
+    ];
+
+    await pool
+      .query(text, values)
+      .then(res => {
+        return true;
+      })
+      .catch(e => {
+        console.error(e.stack);
+        return false;
+      });
+  });
 };
 
 exports.loginUser = async function(user) {
@@ -82,11 +92,24 @@ exports.loginUser = async function(user) {
       if (res.rows.length === 0) {
         return false;
       } else {
-        // console.log(encryptionHelper.comparePassword(user.password, res.rows[0].Password));
-        return encryptionHelper.comparePassword(
-          user.password,
-          res.rows[0].Password
-        );
+        // // console.log(encryptionHelper.comparePassword(user.password, res.rows[0].Password));
+        // return encryptionHelper.comparePassword(
+        //   user.password,
+        //   res.rows[0].Password
+        // );
+
+        // bcrypt.compare(user.password, res.rows[0].Password, function(
+        //   err,
+        //   result
+        // ) {
+        //   console.log('User logged in!');
+        // });
+
+        bcrypt
+          .compare(user.password, res.rows[0].password)
+          .then(function(result) {
+            console.log(result);
+          });
       }
     })
     .catch(e => {

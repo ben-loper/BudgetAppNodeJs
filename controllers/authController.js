@@ -16,14 +16,13 @@ exports.register_new_user = async function(req, res) {
     return res.status(400).send(result.error.details[0]);
   }
 
-  return res.send(result);
-  // let successful = await userDao.registerNewUser(req.body);
-  // if (!successful) {
-  //   res.status(500);
+  try {
+    await userDao.registerNewUser(req.body);
+  } catch (err) {
+    return res.status(400).send({ Error: err.message });
+  }
 
-  //   return res.render('register');
-  // }
-  // return res.render('register');
+  return res.send(result);
 };
 
 exports.get_users = async function(req, res) {
